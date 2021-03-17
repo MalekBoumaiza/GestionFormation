@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
+
 @Setter
 @NoArgsConstructor
 @Entity
@@ -31,6 +31,38 @@ public class Session implements Serializable {
     @ManyToOne
     @JoinColumn(name="formationId", nullable=false)
     private Formation formation;
+
+    public Long getIdSession() {
+        return idSession;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public String getFormateur() {
+        return formateur;
+    }
+
+    public Long getNombreParticpant() {
+        return nombreParticpant;
+    }
+
+    public Set<Personne> getParticipantsList() {
+        return participantsList;
+    }
+
+    public long getSalle() {
+        return salle.getIdSalle();
+    }
+
+    public long getFormation() {
+        return formation.getIdFormation();
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
 
     @ManyToOne
     @JoinColumn(name="salleId", nullable=false)
