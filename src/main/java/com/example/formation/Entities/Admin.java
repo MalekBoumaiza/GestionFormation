@@ -1,63 +1,55 @@
 package com.example.formation.Entities;
 
 import com.example.formation.Models.AdminModel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
+@Getter
+@NoArgsConstructor
 @Entity
-//@Table(name = "Admin", catalog = "formation")
+@Table(name = "Admin", catalog = "formation")
 public class Admin implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAdmin;
     private String login;
     private String password;
+    private String email;
+    private Long tel;
 
-    @ManyToOne
-    @JoinColumn(name="roleId", nullable=false)
-    private Role role;
+    @OneToMany(mappedBy="admin")
+    private Set<Role> roles;
 
-    public Long getIdAdmin() {
-        return idAdmin;
-    }
-
-    public Admin(String login, String password, Role role) {
-
+    public Admin(String login, String password, String email, Long tel, Set<Role> roleList) {
         this.login = login;
         this.password = password;
-        this.role = role;
-    }
-
-    public Admin() {
-
-    }
-
-
-
-    public String getLogin() {
-        return login;
+        this.email = email;
+        this.tel = tel;
+        this.roles = roleList;
     }
 
     public void setLogin(String login) {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-   }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public void setRole(Role role) {
-       this.role = role;
+    public void setTel(Long tel) {
+        this.tel = tel;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles= roles;
     }
 }

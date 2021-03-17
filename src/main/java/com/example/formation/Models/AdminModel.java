@@ -7,18 +7,18 @@ public class AdminModel implements Serializable {
      public  Long idAdmin ;
      public String login;
      public String password;
-     public String libelle;
-     public Long idRole;
+    // public String libelle;
+  //   public Long idRole;
 
      public AdminModel() {
      }
 
-     public AdminModel(Long idAdmin, String login, String password, String libelle, Long idRole) {
+     public AdminModel(Long idAdmin, String login, String password) {
           this.idAdmin = idAdmin;
           this.login = login;
           this.password = password;
-          this.libelle = libelle;
-          this.idRole = idRole;
+         // this.libelle = libelle;
+          //this.idRole = idRole;
      }
 }
 /*public interface AdminModel{

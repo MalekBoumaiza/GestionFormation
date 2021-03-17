@@ -1,16 +1,12 @@
 package com.example.formation.Controllers;
 
 import com.example.formation.Entities.Admin;
-import com.example.formation.Models.AdminModel;
 import com.example.formation.Services.AdminService;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/GestionFormationAPI")
@@ -18,10 +14,37 @@ public class AdminController {
     @Autowired
     AdminService adminSRV;
 
-
-
     @GetMapping("/allAdmin")
+    public List<Admin> getAllAdmins() {
+        List<Admin> pro = adminSRV.getAllAdmins();
+
+        return pro;
+
+    }
+    @PostMapping("/addAdmin")
+    public Admin createAdmin(@RequestBody Admin admin) {
+       return adminSRV.addAdmin(admin);
+    }
+
+    @GetMapping("/GetAdminById/{id}")
+    public Admin getUserById(@PathVariable(value = "id") Long Id) {
+        return adminSRV.getAdminById(Id);
+    }
+
+    @DeleteMapping("/DeleteAdmin/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long userId) {
+        adminSRV.deleteAdmin(userId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/updateAdmin/{id}")
+    public Admin updateAdmin(@PathVariable(value = "id") Long Id,
+                             @RequestBody Admin AdminDetails) {
+       return adminSRV.updateAdmin(Id, AdminDetails);
+    }
+
+  /*  @GetMapping("/allAdmin1")
     public List<AdminModel> allAdmins() {
         return adminSRV.getAdmins();
-    }
+    }*/
 }

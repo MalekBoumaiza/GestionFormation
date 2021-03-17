@@ -7,22 +7,24 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
+
+@Entity
+@Table(name = "Profile", catalog = "formation")
+
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "Domaine", catalog = "formation")
-public class Domaine implements Serializable {
+public class Profile implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDomaine;
+    private Long idProfile;
     private String libelle;
 
-    @OneToMany(mappedBy="domaine")
-    private Set<Formation> formationList;
+    @OneToMany(mappedBy="profile")
+    private Set<Personne> personnesList;
 
-    public Domaine(String libelle, Set<Formation> formationList) {
+    public Profile(String libelle, Set<Personne> personnesList) {
         this.libelle = libelle;
-        this.formationList = formationList;
+        this.personnesList = personnesList;
     }
 }

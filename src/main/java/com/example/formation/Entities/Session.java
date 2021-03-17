@@ -1,18 +1,32 @@
 package com.example.formation.Entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "Session", catalog = "formation")
 public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDomaine;
+    private Long idSession;
     private Date dateDebut;
     private Date dateFin;
+    private String formateur;
+    private Long nombreParticpant;
+
+
+    @ManyToMany(mappedBy = "sessions")
+    private Set<Personne> participantsList;
 
     @ManyToOne
     @JoinColumn(name="formationId", nullable=false)
@@ -22,89 +36,24 @@ public class Session implements Serializable {
     @JoinColumn(name="salleId", nullable=false)
     private Salle salle;
 
-    @ManyToOne
-    @JoinColumn(name="formateurId", nullable=false)
-    private Formateur formateur;
+    public Session(Date dateDebut, Date dateFin, String formateur, Long nombreParticpant,
+                   Set<Personne> participantsList, Formation formation, Salle salle) {
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.formateur = formateur;
+        this.nombreParticpant = nombreParticpant;
+        this.participantsList = participantsList;
+        this.formation = formation;
+        this.salle = salle;
+    }
 
+
+/*
     @OneToMany(mappedBy="session")
     private Set<ParticipantNational> participantNatList;
 
     @OneToMany(mappedBy="session")
     private Set<ParticipantInternational> participantInternList;
+*/
 
-    public Session(Date dateDebut, Date dateFin, Formation formation, Salle salle,
-                   Formateur formateur, Set<ParticipantNational> participantNatList,
-                   Set<ParticipantInternational> participantInternList) {
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.formation = formation;
-        this.salle = salle;
-        this.formateur = formateur;
-        this.participantNatList = participantNatList;
-        this.participantInternList = participantInternList;
-    }
-
-    public Session() {
-
-    }
-
-    public Long getIdDomaine() {
-        return idDomaine;
-    }
-
-    public Date getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public Formation getFormation() {
-        return formation;
-    }
-
-    public void setFormation(Formation formation) {
-        this.formation = formation;
-    }
-
-    public Salle getSalle() {
-        return salle;
-    }
-
-    public void setSalle(Salle salle) {
-        this.salle = salle;
-    }
-
-    public Formateur getFormateur() {
-        return formateur;
-    }
-
-    public void setFormateur(Formateur formateur) {
-        this.formateur = formateur;
-    }
-
-    public Set<ParticipantNational> getParticipantNatList() {
-        return participantNatList;
-    }
-
-    public void setParticipantNatList(Set<ParticipantNational> participantNatList) {
-        this.participantNatList = participantNatList;
-    }
-
-    public Set<ParticipantInternational> getParticipantInternList() {
-        return participantInternList;
-    }
-
-    public void setParticipantInternList(Set<ParticipantInternational> participantInternList) {
-        this.participantInternList = participantInternList;
-    }
 }

@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Objects;
 
 public interface InterfAdminService {
-    public List<AdminModel> getAdmins();
+  //  public List<AdminModel> getAdmins();
     public List<Admin> getAllAdmins();
     public Admin getAdminById(long id);
-    public void addAdmin(Admin admin);
+    public Admin addAdmin(Admin admin);
+    public Admin updateAdmin( Long id, Admin admin);
     public void deleteAdmin(long id);
 }

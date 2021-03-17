@@ -1,9 +1,15 @@
 package com.example.formation.Entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "Formation", catalog = "formation")
 public class Formation implements Serializable {
@@ -32,55 +38,4 @@ public class Formation implements Serializable {
         this.sessionList = sessionList;
     }
 
-    public Long getIdFormation() {
-        return idFormation;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public int getNbSession() {
-        return NbSession;
-    }
-
-    public void setNbSession(int nbSession) {
-        NbSession = nbSession;
-    }
-
-    public String getDuree() {
-        return duree;
-    }
-
-    public void setDuree(String duree) {
-        this.duree = duree;
-    }
-
-    public long getTarif() {
-        return tarif;
-    }
-
-    public void setTarif(long tarif) {
-        this.tarif = tarif;
-    }
-
-    public Domaine getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(Domaine domaine) {
-        this.domaine = domaine;
-    }
-
-    public Set<Session> getSessionList() {
-        return sessionList;
-    }
-
-    public void setSessionList(Set<Session> sessionList) {
-        this.sessionList = sessionList;
-    }
 }
