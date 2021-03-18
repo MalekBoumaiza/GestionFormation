@@ -1,12 +1,14 @@
 package com.example.formation.Entities;
 
-import com.example.formation.Models.DomaineModel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "Formation", catalog = "formation")
@@ -23,7 +25,6 @@ public class Formation implements Serializable {
     @JoinColumn(name="domaineId", nullable=false)
     private Domaine domaine;
 
-
     @OneToMany(mappedBy="formation")
     private Set<Session> sessionList;
 
@@ -37,57 +38,4 @@ public class Formation implements Serializable {
         this.sessionList = sessionList;
     }
 
-    public Long getIdFormation() {
-        return idFormation;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public int getNbSession() {
-        return NbSession;
-    }
-
-    public String getDuree() {
-        return duree;
-    }
-
-    public long getTarif() {
-        return tarif;
-    }
-
-    public DomaineModel getDomaine() {
-        DomaineModel dom = new DomaineModel(domaine.getIdDomaine(), domaine.getLibelle());
-        return dom;
-    }
-
-    public Set<Session> getSessionList() {
-        return sessionList;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public void setNbSession(int nbSession) {
-        NbSession = nbSession;
-    }
-
-    public void setDuree(String duree) {
-        this.duree = duree;
-    }
-
-    public void setTarif(long tarif) {
-        this.tarif = tarif;
-    }
-
-    public void setDomaine(DomaineModel domaine) {
-        this.domaine.setIdDomaine(domaine.idDomaine);
-        this.domaine.setLibelle(domaine.libelle);
-    }
-
-    public void setSessionList(Set<Session> sessionList) {
-        this.sessionList = sessionList;
-    }
 }

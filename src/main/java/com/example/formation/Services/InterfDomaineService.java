@@ -1,5 +1,6 @@
 package com.example.formation.Services;
 
+import com.example.formation.Entities.Admin;
 import com.example.formation.Entities.Domaine;
 
 import java.util.List;
