@@ -1,9 +1,7 @@
 package com.example.formation.Entities;
 
 import com.example.formation.Models.DomaineModel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;

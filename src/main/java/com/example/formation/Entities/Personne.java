@@ -1,9 +1,7 @@
 package com.example.formation.Entities;
 
 import com.example.formation.Models.ProfileModel;
-import com.example.formation.Models.RoleModel;
 import lombok.NoArgsConstructor;
-import org.springframework.context.support.BeanDefinitionDsl;
 
 import javax.persistence.*;
 import java.io.Serializable;

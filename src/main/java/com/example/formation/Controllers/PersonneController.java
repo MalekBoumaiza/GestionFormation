@@ -1,8 +1,6 @@
 package com.example.formation.Controllers;
 
-import com.example.formation.Entities.Domaine;
 import com.example.formation.Entities.Personne;
-import com.example.formation.Services.DomaineService;
 import com.example.formation.Services.PersonneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
