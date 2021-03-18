@@ -52,4 +52,6 @@ public class Admin implements Serializable{
     public void setRoles(Set<Role> roles) {
         this.roles= roles;
     }
+
+    public void setIdAdmin(Long idAdmin) { this.idAdmin = idAdmin; }
 }

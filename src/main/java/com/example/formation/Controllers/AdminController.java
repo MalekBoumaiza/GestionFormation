@@ -23,7 +23,7 @@ public class AdminController {
     }
     @PostMapping("/addAdmin")
     public Admin createAdmin(@RequestBody Admin admin) {
-       return adminSRV.addAdmin(admin);
+        return adminSRV.addAdmin(admin);
     }
 
     @GetMapping("/GetAdminById/{id}")
@@ -40,7 +40,7 @@ public class AdminController {
     @PutMapping("/updateAdmin/{id}")
     public Admin updateAdmin(@PathVariable(value = "id") Long Id,
                              @RequestBody Admin AdminDetails) {
-       return adminSRV.updateAdmin(Id, AdminDetails);
+        return adminSRV.updateAdmin(Id, AdminDetails);
     }
 
   /*  @GetMapping("/allAdmin1")

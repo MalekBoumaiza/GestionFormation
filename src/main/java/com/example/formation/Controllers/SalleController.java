@@ -1,6 +1,6 @@
 package com.example.formation.Controllers;
 
-import com.example.formation.Entities.Admin;
+
 import com.example.formation.Entities.Salle;
 import com.example.formation.Services.SalleService;
 import org.springframework.beans.factory.annotation.Autowired;

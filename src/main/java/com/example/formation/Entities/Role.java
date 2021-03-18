@@ -1,17 +1,13 @@
 package com.example.formation.Entities;
 
 import com.example.formation.Models.AdminModel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 
-@Setter
+
 @NoArgsConstructor
 @Entity
 @Table(name = "Role", catalog = "formation")
@@ -29,7 +25,8 @@ public class Role implements Serializable {
     @JoinTable(name = "Personne_Role",
             joinColumns = @JoinColumn(name = "roleId", referencedColumnName = "idRole"),
             inverseJoinColumns = @JoinColumn(name = "personneId", referencedColumnName = "idPersonne"))
-    private Set<Personne> personnes = new HashSet<>();
+    private Set<Personne> personnes;
+
 
     public Long getIdRole() {
         return idRole;
@@ -39,9 +36,30 @@ public class Role implements Serializable {
         return libelle;
     }
 
-    public Set<Personne> getPersonnes() {
+    /*public Set<Personne> getPersonnes() {
         return personnes;
     }
+*/
+    public AdminModel getAdmin() {
+        AdminModel Ad = new AdminModel(admin.getIdAdmin(), admin.getLogin(),
+                admin.getPassword(), admin.getEmail(), admin.getTel() );
+        return Ad;
+    }
 
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public void setAdmin(AdminModel admin) {
+        this.admin.setTel(admin.tel);
+        this.admin.setPassword(admin.password);
+        this.admin.setEmail(admin.email);
+        this.admin.setLogin(admin.login);
+        this.admin.setIdAdmin(admin.idAdmin);
+    }
+
+    public void setPersonnes(Set<Personne> personnes) {
+        this.personnes = personnes;
+    }
 
 }

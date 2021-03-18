@@ -22,7 +22,22 @@ public class DomaineService implements InterfDomaineService{
     public Domaine getDomaineById(long id) {
         return domaineRepository.findById(id).get();}
     @Override
-    public void addDomaine(Domaine admin) {domaineRepository.save(admin);}
+    public Domaine addDomaine(Domaine admin) {return domaineRepository.save(admin);}
     @Override
     public void deleteDomaine(long id) {domaineRepository.deleteById(id);}
+
+
+    @Override
+    public Domaine updateDomaine( Long Id, Domaine DomaineDetails) {
+
+        Domaine domaine = domaineRepository.findById(Id).orElseThrow(null);
+
+        domaine.setLibelle(DomaineDetails.getLibelle());
+        domaine.setFormationList(DomaineDetails.getFormationList());
+
+        Domaine updatedDomaine = domaineRepository.save(domaine);
+
+        return updatedDomaine;
+    }
+
 }
