@@ -35,7 +35,7 @@ public class AdminService implements InterfAdminService{
     @Override
     public void deleteAdmin(long id) {adminRepository.deleteById(id);}
 
-   @Override
+    @Override
     public Admin updateAdmin( Long Id, Admin AdminDetails) {
 
         Admin admin = adminRepository.findById(Id).orElseThrow(null);
